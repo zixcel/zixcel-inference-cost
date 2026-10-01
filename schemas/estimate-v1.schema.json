@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "zixcel://inference-cost/schema/estimate/v1",
+  "title": "Zixcel inference cost estimate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "unit", "usageDigest", "rateCardDigest", "inputMicroUnits", "cachedInputMicroUnits", "cacheWriteInputMicroUnits", "outputMicroUnits", "reasoningOutputMicroUnits", "totalMicroUnits", "billingAuthoritative"],
+  "properties": {
+    "schema": {"const": "zixcel://inference-cost/estimate/v1"},
+    "unit": {"type": "string", "minLength": 1},
+    "usageDigest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "rateCardDigest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "inputMicroUnits": {"type": "integer", "minimum": 0, "description": "Cost of uncached input tokens only; cached input is reported separately."},
+    "cachedInputMicroUnits": {"type": "integer", "minimum": 0, "description": "Cost of the cached subset of input tokens."},
+    "cacheWriteInputMicroUnits": {"type": "integer", "minimum": 0},
+    "outputMicroUnits": {"type": "integer", "minimum": 0},
+    "reasoningOutputMicroUnits": {"type": "integer", "minimum": 0},
+    "totalMicroUnits": {"type": "integer", "minimum": 0},
+    "billingAuthoritative": {"const": false}
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "zixcel://inference-cost/schema/token-usage/v1",
+  "title": "Zixcel inference token usage",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["inputTokens", "cachedInputTokens", "cacheWriteInputTokens", "outputTokens", "reasoningOutputTokens"],
+  "properties": {
+    "inputTokens": {"type": "integer", "minimum": 0},
+    "cachedInputTokens": {"type": "integer", "minimum": 0},
+    "cacheWriteInputTokens": {"type": "integer", "minimum": 0},
+    "outputTokens": {"type": "integer", "minimum": 0},
+    "reasoningOutputTokens": {"type": "integer", "minimum": 0}
+  }
+}

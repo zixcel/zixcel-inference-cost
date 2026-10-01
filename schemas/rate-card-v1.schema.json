@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "zixcel://inference-cost/schema/rate-card/v1",
+  "title": "Zixcel inference cost rate card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "unit", "source", "asOf", "inputMicroUnitsPerToken", "cachedInputMicroUnitsPerToken", "cacheWriteInputMicroUnitsPerToken", "outputMicroUnitsPerToken", "reasoningOutputMicroUnitsPerToken"],
+  "properties": {
+    "schema": {"const": "zixcel://inference-cost/rate-card/v1"},
+    "unit": {"type": "string", "minLength": 1},
+    "source": {"type": "string", "minLength": 1},
+    "asOf": {"type": "string", "minLength": 1},
+    "inputMicroUnitsPerToken": {"type": "integer", "minimum": 0},
+    "cachedInputMicroUnitsPerToken": {"type": "integer", "minimum": 0},
+    "cacheWriteInputMicroUnitsPerToken": {"type": "integer", "minimum": 0},
+    "outputMicroUnitsPerToken": {"type": "integer", "minimum": 0},
+    "reasoningOutputMicroUnitsPerToken": {"type": "integer", "minimum": 0}
+  }
+}
