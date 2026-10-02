@@ -1,19 +1,27 @@
 # zixcel-inference-cost
 
-Provider-neutral, local-only inference usage and cost estimation.
+Calculate an inference-cost estimate from explicit usage and price inputs.
 
-This package does not discover prices, contact a provider, resolve credentials,
-route a model, or perform billing. The caller supplies measured usage and a
-versioned rate card. All arithmetic uses integer micro-units and checked
-operations. A result contains digests for both the usage and the rate card so
-that a projection can be reproduced without retaining the original request.
+## What you can do
 
-Callers reference the estimator as a versioned dependency and own execution,
-authorization, transport and scheduling integration.
+- Validate supplied usage and rates.
+- Return reproducible calculated costs.
 
-The JSON contracts are in [`schemas/`](schemas/). The `$id` values use the
-package-owned `zixcel://inference-cost/schema/...` namespace and are separate
-from transport protocol identifiers.
+## Current scope
+
+Prices and usage are caller inputs. The package does not retrieve prices, bill an account or purchase capacity.
+
+Package distribution is not activated by this documentation. Use the checked-in source and the declared dependency versions; published availability must be verified separately.
+
+## Getting started
+
+Install Rust 1.97 or newer and make the declared dependencies available. Use the configured private registry when a dependency is not distributed publicly. Run from this repository:
+
+```sh
+cargo test --locked
+```
+
+## Examples and interface details
 
 ## Usage
 
@@ -31,12 +39,10 @@ assert_eq!(result.total_micro_units(), 2_480);
 The rates are informational estimates and must not silently control model
 selection. Provider billing remains authoritative at the provider boundary.
 
-## Package integration
+## Documentation and source
 
-The package is an independently consumable unit. Callers reference its documented
-interface through a versioned dependency and own application-specific composition
-and integration.
+[Interface reference](docs/interface-reference.md)
 
-## Distribution license
+[Usage guide](docs/getting-started.md)
 
-Apache-2.0. Copyright 2026 HAT Inc. See [LICENSE](LICENSE) and [NOTICE](NOTICE). Earlier license files and third-party terms remain applicable to their respective portions.
+[Schemas](schemas) · [Implementation and public interfaces](src) · [Verification cases](tests) · [Contributing](CONTRIBUTING.md) · [Security reporting](SECURITY.md) · [License](LICENSE) · [Attribution notices](NOTICE)
